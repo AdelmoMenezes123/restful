@@ -5,22 +5,17 @@ let db = new NeDB({
 });
 
 module.exports = (app) => {
-    app.get('/users', (req, res) => {
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'application/json');
-
-        res.json({
-            users: [{
-                nome: 'Joao dos Santos',
-                email: 'joao@gmail.com',
-                id: 1
-            },
-            {
-                nome: 'Maria dos Santos',
-                email: 'maria@gmail.com',
-                id: 2
-            }]
-        });
+    app.get('/users',async (req, res) => {
+        db.find({}).sort({name:1}).exec((err,users)=>{
+            if(err){
+                console.log(`Error: ${err}`);
+                res.status(400).json({
+                    error: err
+                });
+            }else{
+                res.status(200).json({users});
+            }
+        } )
     });
 
     app.post('/users', (req, res) => {
@@ -30,10 +25,12 @@ module.exports = (app) => {
                 res.status(400).json({
                     error: err
                 });
-            }else{
+            } else {
                 res.status(200).json(user)
             }
 
-        })
+        });
+
+        0
     });
 }
