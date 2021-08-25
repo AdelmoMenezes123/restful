@@ -1,3 +1,4 @@
+const { request } = require('express');
 let NeDB = require('nedb');
 
 //criando uma instacia e definindo o nome do arquivo que sera salvo os dados
@@ -11,14 +12,17 @@ module.exports = (app) => {
     // configurando rota padrão
     let route = app.route('/users')
 
+    // configurando rota procurar por id
+    let routeId = app.route('/users/:id')
+
     route.get((req, res) => {
-        db.find({}).sort({name:1}).exec((err,users)=>{
-            if(err){
+        db.find({}).sort({ name: 1 }).exec((err, users) => {
+            if (err) {
                 app.utils.error.send(err, req, res);
-            }else{
-                res.status(200).json({users});
+            } else {
+                res.status(200).json({ users });
             }
-        } )
+        })
     });
 
     route.post((req, res) => {
@@ -30,7 +34,18 @@ module.exports = (app) => {
             }
 
         });
-
-        0
     });
+
+    routeId.get((req, res) => {
+        const { id } = req.params;
+
+        db.findOne({ _id: id }).exec((err, user) => {
+            if (err) {
+                app.utils.error.send(err, req, res);
+            } else {
+                res.status(200).json(user)
+            }
+        });
+    });
+
 }
