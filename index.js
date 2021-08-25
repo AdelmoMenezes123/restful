@@ -1,7 +1,10 @@
 const express = require('express');
 const consign = require('consign');
+const bodyParser = require('body-parser');
 
 const app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 //incluir todas as rotas que esta na pasta routes, dentro de app
 consign().include('routes').into(app);
