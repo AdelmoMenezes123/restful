@@ -59,4 +59,15 @@ module.exports = (app) => {
         });
     });
 
+    routeId.delete((req, res) => {
+        const { id } = req.params;
+        db.remove({ _id: id }, {}, err => {
+            if (err) {
+                app.utils.error.send(err, req, res);
+            } else {
+                res.status(200).json(id)
+            }
+        });
+    });
+
 }
