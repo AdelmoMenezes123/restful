@@ -1,0 +1,25 @@
+{
+  "name": "restful",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "consign": "^0.1.6",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdelmoMenezes123/restful.git"
+  },
+  "keywords": [],
+  "author": "Adelmo Menezes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AdelmoMenezes123/restful/issues"
+  },
+  "homepage": "https://github.com/AdelmoMenezes123/restful#readme"
+}
