@@ -52,6 +52,8 @@ module.exports = (app) => {
 
   routeId.put((req, res) => {
     const { id } = req.params;
+    if (!app.utils.validator.user(app, req, res)) return false;
+
     db.update({ _id: id }, req.body, (err) => {
       if (err) {
         app.utils.error.send(err, req, res);
