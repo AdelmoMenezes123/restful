@@ -1,7 +1,7 @@
 module.exports = function (app) {
-    app.get('/',(req, res)=>{
-        res.statusCode = 200;
-        res.setHeader('Content-Type','text/html');
-        res.end('<h1>Ola</h1>');
-    })
-}
+  app.get("/", (req, res) => {
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "text/html");
+    res.end("<h1>Ola</h1>");
+  });
+};
