@@ -16,7 +16,7 @@ app.use(expressValidator());
 consign().include("routes").include("utils").into(app);
 
 // configurando servidor para escultar a porta que sera rrodada a aplicação
-app.listen(3000, "127.0.0.1", () => {
+app.listen(4000, "127.0.0.1", () => {
   console.log("servidor esta rodando");
 });
 
