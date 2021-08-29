@@ -12,7 +12,7 @@ module.exports = (app) => {
   let route = app.route("/users");
 
   // configurando rota procurar por id
-  let routeId = app.route("/user/:id");
+  let routeId = app.route("/users/:id");
 
   route.get((req, res) => {
     db.find({})
@@ -41,7 +41,7 @@ module.exports = (app) => {
   routeId.get((req, res) => {
     const { id } = req.params;
 
-    db.findOne({ _id: id }).exec((err, user) => {
+    db.findOne({ _id: req.params.id }).exec((err, user) => {
       if (err) {
         app.utils.error.send(err, req, res);
       } else {
